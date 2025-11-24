@@ -1,8 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlaceableSystem : MonoBehaviour
 {
-    private Vector3 mousePos = new(0, 0, 0);
+    #region Fields
     [SerializeField]
     private GridManager _gridManager;
     [SerializeField]
@@ -10,7 +11,19 @@ public class PlaceableSystem : MonoBehaviour
     
     [SerializeField]
     private Cell _currentCell = null;
+
+    [SerializeField]
+    private UICardPanel UICardPanel;
+
+    #endregion
+
+    #region Properties
     private bool _isInitialized = false;
+    private Vector3 mousePos = new(0, 0, 0);
+
+    UICard _currentselectCard = null;
+
+    #endregion
     private void FixedUpdate()
     {
         mousePos = Input.mousePosition;
@@ -18,6 +31,11 @@ public class PlaceableSystem : MonoBehaviour
 
         if (!_gridManager.TryGetCellByMousePosition(mousePos, out var cell))
         {
+            if (_currentCell != null)
+            {
+                _currentCell.Deselect();
+                _currentCell = null;
+            }
             return;
         }
 
@@ -27,7 +45,6 @@ public class PlaceableSystem : MonoBehaviour
 
             _currentCell.Deselect();
         }
-
         _currentCell = cell;
         _currentCell.Select();
     }
@@ -35,16 +52,25 @@ public class PlaceableSystem : MonoBehaviour
     private void Update()
     {
         if (!_isInitialized) { return; }
-
-        if (Input.GetMouseButtonDown(0))
+        
+        if (UICardPanel.IsCurrentSelected())
         {
-            // _factoryBuildings.Create(_currentCell.WorldPosition);
+            _currentselectCard = UICardPanel.GetCurrentSelect();
+        }
+
+
+        if (_currentselectCard != null && _currentCell != null && Input.GetMouseButtonDown(0) && _currentCell.HasBuilding == false &&
+         GridWorld.Instance.BankValue >= _currentselectCard.Card.Cost)
+        {
+            _factoryBuildings.Create(_currentselectCard.Card.Building, _currentCell.WorldPosition);
+            _currentCell.Builded();
+
+            GridWorld.Instance.BankValue -= _currentselectCard.Card.Cost;
         }
     }
 
     #region PublicMethods
 
-    
     public void Initialize(FactoryBuildings factoryBuildings, GridManager gridManager)
     {
         _factoryBuildings = factoryBuildings;
@@ -52,7 +78,6 @@ public class PlaceableSystem : MonoBehaviour
 
         _isInitialized = true;
     }
-
 
     #endregion
 }

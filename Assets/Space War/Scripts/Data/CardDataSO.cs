@@ -13,4 +13,7 @@ public class CardDataSO : ScriptableObject
 
     [field: SerializeField]
     public Sprite Sprite{ get; private set; } 
+
+    [field: SerializeField]
+    public GameObject Building {get; private set;}
 }

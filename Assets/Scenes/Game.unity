@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 24294791}
   - component: {fileID: 24294793}
   - component: {fileID: 24294792}
+  - component: {fileID: 24294794}
   m_Layer: 0
   m_Name: BankPanel
   m_TagString: Untagged
@@ -195,6 +196,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24294790}
   m_CullTransparentMesh: 1
+--- !u!114 &24294794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24294790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89fe63a84915ed98a92cbb87ec2aa4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BankValueText: {fileID: 1928016726}
 --- !u!1 &66119858
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 4369151306417159620, guid: 7f895435ac6394e05a403a519e3dfb12, type: 3}
+  BankValue: 10
   <Deck>k__BackingField: {fileID: 11400000, guid: 8f005284fb07f19219b4a5b4e0d7feed, type: 2}
   <GridManager>k__BackingField: {fileID: 1147281495}
   <PlaceableSystem>k__BackingField: {fileID: 1644012655}
@@ -1042,6 +1057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gridManager: {fileID: 1147281495}
+  UICardPanel: {fileID: 66119863}
 --- !u!1 &1831453704
 GameObject:
   m_ObjectHideFlags: 0

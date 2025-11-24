@@ -65,7 +65,7 @@ public class UICard : MonoBehaviour
         selectFrameImage.enabled = true;
     }
 
-    public void Unselect()
+    public void UnSelect()
     {
         selectFrameImage.enabled = false;
     }

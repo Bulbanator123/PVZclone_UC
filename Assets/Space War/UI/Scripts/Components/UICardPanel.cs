@@ -37,6 +37,17 @@ public class UICardPanel : MonoBehaviour
         }
         
     }
+
+    public bool IsCurrentSelected()
+    {
+        return _currentSelect != null ? true: false;
+    }
+    
+    public UICard GetCurrentSelect()
+    {
+        return _currentSelect;
+    }
+
     #endregion
 
     #region PrivateMethods
@@ -50,7 +61,7 @@ public class UICardPanel : MonoBehaviour
         
         if (_currentSelect != null)
         {
-            _currentSelect.Unselect();
+            _currentSelect.UnSelect();
         }
 
         _currentSelect = card;

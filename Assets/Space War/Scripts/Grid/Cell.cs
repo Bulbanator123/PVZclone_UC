@@ -7,6 +7,7 @@ public class Cell
     public Vector3 WorldPosition { get; private set; }
     public float Size { get; private set; }
     public bool IsSelected { get; private set; }
+    public bool HasBuilding { get; private set; }
     #endregion
 
     #region  Constract
@@ -27,6 +28,17 @@ public class Cell
     {
         IsSelected = false;
     }
+    
+    public void Builded()
+    {
+        HasBuilding = true;
+    }
+
+    public void UnBuilded()
+    {
+        HasBuilding = false;
+    }
+
     public void DebugDrawGizmos()
     {
         Gizmos.color = Color.yellow;

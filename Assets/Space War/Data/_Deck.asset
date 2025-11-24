@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: _Deck
   m_EditorClassIdentifier: 
   <Cards>k__BackingField:
+  - {fileID: 11400000, guid: 26e2da7b998c675c686bd38ed721d4bb, type: 2}
+  - {fileID: 11400000, guid: 415893f6fb2c83578bebba585c43a1f5, type: 2}
+  - {fileID: 11400000, guid: 8c54a72dbcc4782c7a75cbda6e01d564, type: 2}
   - {fileID: 11400000, guid: fcb0752e6c172dc7baf00983bac49c8a, type: 2}
-  - {fileID: 11400000, guid: fcb0752e6c172dc7baf00983bac49c8a, type: 2}
+  - {fileID: 11400000, guid: 32817df15a56c8001b96e5071b83a2c7, type: 2}
