@@ -1,17 +1,23 @@
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
-{
-    #region Fields
+{   
 
+    #region Fields
+    [SerializeField]
+    private Camera _camera;
     [SerializeField]
     private Vector3 gridOrigin = Vector3.zero;
+    [SerializeField]
+    private Plane gridplane = new Plane(Vector3.forward, new Vector3(0, 0, 0));
 
+    public Plane GridPlane => gridplane;
     #endregion
 
 
     #region  Properties
-
+    [field: SerializeField]
+    public Vector3 Pos { get; private set; } = new Vector3(0, 0, 0);
     [field: SerializeField]
     public Vector2Int GridSize { get; private set; } = new Vector2Int(9, 5);
 
@@ -24,23 +30,33 @@ public class GridManager : MonoBehaviour
 
 
     #region LifeCycle
-
     private void OnValidate()
     {
         Initialize();
     }
-
+    [ContextMenu("DebugGetCell")]
+    public void DebugGetCell()
+    {
+        if (TryGetCellByWorldPosition(Pos, out var cell))
+        {
+            Debug.Log(cell.WorldPosition);
+            cell.Select();
+        }
+        else
+        {
+            Debug.Log("Не Ячейка!");
+        }
+    }
     #endregion
 
     #region PublicMethods
-
     public bool TryGetCellByWorldPosition(Vector3 worldPosition, out Cell cell)
     {
         cell = null;
 
         int x = Mathf.FloorToInt((worldPosition.x - gridOrigin.x) / CellSize);
         int y = Mathf.FloorToInt((worldPosition.z - gridOrigin.z) / CellSize);
-
+        
         if (x < 0 || y < 0)
             return false;
 
@@ -49,7 +65,7 @@ public class GridManager : MonoBehaviour
 
         if (y >= GridSize.y)
             return false;
-
+        
         var index = GetLineIndex(x, y);
 
         if (index < 0)
@@ -62,11 +78,29 @@ public class GridManager : MonoBehaviour
         return true;
     }
 
+    public bool TryGetCellByMousePosition(Vector3 mousePostion, out Cell cell)
+    {
+        cell = null;
+        var ray = _camera.ScreenPointToRay(mousePostion);
+        Debug.DrawRay(mousePostion, ray.direction, Color.red);
+        if (gridplane.Raycast(ray, out var enter))
+        {
+            var point = ray.GetPoint(enter);
+
+            return TryGetCellByWorldPosition(point, out cell);
+        }
+
+        return false;
+    }
     #endregion
 
 
     #region  PrivateMethods
-    [ContextMenu("Initialize Grid")]
+    private void Start()
+    {
+        _camera = Camera.main;
+    }
+    [ContextMenu("GridInit")]
     private void Initialize()
     {
         Cells = new Cell[GridSize.x * GridSize.y];
@@ -86,8 +120,8 @@ public class GridManager : MonoBehaviour
                 Cells[index] = cell;
             }
         }
+        gridplane = new Plane(Vector3.down, gridOrigin);
     }
-
     private int GetLineIndex(int x, int y)
     {
         return (x * GridSize.y) + y;
