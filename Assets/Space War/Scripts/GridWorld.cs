@@ -42,7 +42,7 @@ public class GridWorld : MonoBehaviour
 
     private void Update()
     {
-        BankValue = 10 * Time.deltaTime;
+        BankValue += 10 * Time.deltaTime;
         if (BankValue > 10000)
         {
             BankValue = 10000;
