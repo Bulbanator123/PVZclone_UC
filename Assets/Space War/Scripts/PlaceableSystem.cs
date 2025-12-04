@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlaceableSystem : MonoBehaviour
 {
     #region Fields
+    
     [SerializeField]
     private GridManager _gridManager;
     [SerializeField]
@@ -19,6 +20,8 @@ public class PlaceableSystem : MonoBehaviour
     private Vector3 mousePos = new(0, 0, 0);
 
     #endregion
+
+    #region PrivateMethods
     private void FixedUpdate()
     {
         mousePos = Input.mousePosition;
@@ -62,16 +65,20 @@ public class PlaceableSystem : MonoBehaviour
         {
             var view = ViewsManager.GetView<UIGameplayView>();
             var selectedCard = view.GetSelectedCard();
+
             if (_currentCell != null && _currentCell.HasBuilding == false && GridWorld.Instance.BankValue >= selectedCard.Cost)
             {
                 return;
             }
+            
             _factoryBuildings.Create(selectedCard, _currentCell.WorldPosition);
             _currentCell.Builded();
 
             GridWorld.Instance.BankValue -= selectedCard.Cost;
         }
     }
+
+    #endregion
 
     #region PublicMethods
 
