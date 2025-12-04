@@ -32,7 +32,7 @@ public class GridWorld : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        FactoryBuildings = new(cubePrefab);
+        FactoryBuildings = new();
         PlaceableSystem.Initialize(FactoryBuildings, GridManager);
     }
 

@@ -10,7 +10,7 @@ public class UICardPanel : MonoBehaviour
     [SerializeField]
     private Transform content;
 
-    private UICard _currentSelect;
+    public UICard CurrentSelect {get; private set;}
 
     #endregion
 
@@ -37,35 +37,24 @@ public class UICardPanel : MonoBehaviour
         }
         
     }
-
-    public bool IsCurrentSelected()
-    {
-        return _currentSelect != null ? true: false;
-    }
-    
-    public UICard GetCurrentSelect()
-    {
-        return _currentSelect;
-    }
-
     #endregion
 
     #region PrivateMethods
 
     private void Card_OnClick(UICard card)
     {
-        if (_currentSelect == card)
+        if (CurrentSelect == card)
         {
             return;
         }
         
-        if (_currentSelect != null)
+        if (CurrentSelect != null)
         {
-            _currentSelect.UnSelect();
+            CurrentSelect.UnSelect();
         }
 
-        _currentSelect = card;
-        _currentSelect.Select();    
+        CurrentSelect = card;
+        CurrentSelect.Select();    
     }
     
     private void Clear()
