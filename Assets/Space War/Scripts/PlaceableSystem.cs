@@ -66,7 +66,7 @@ public class PlaceableSystem : MonoBehaviour
             var view = ViewsManager.GetView<UIGameplayView>();
             var selectedCard = view.GetSelectedCard();
 
-            if (_currentCell != null && _currentCell.HasBuilding == false && GridWorld.Instance.BankValue >= selectedCard.Cost)
+            if (selectedCard == null || _currentCell == null || _currentCell.HasBuilding == true || GridWorld.Instance.BankValue < selectedCard.Cost)
             {
                 return;
             }

@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: SunPanel
   <Cost>k__BackingField: 10
-  <Sprite>k__BackingField: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  <Building>k__BackingField: {fileID: 4369151306417159620, guid: 7b94b25c5466c2a89a2a87e0890718d9, type: 3}
+  <Sprite>k__BackingField: {fileID: -1975015595, guid: 1bd1e0a183b7797cfbfe3a7f298f5de9,
+    type: 3}
+  <Building>k__BackingField: {fileID: 2888545007160614275, guid: e563a25f4363de83aafb2e53029fcda2,
+    type: 3}

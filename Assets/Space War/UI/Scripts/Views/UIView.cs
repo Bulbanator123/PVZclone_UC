@@ -6,6 +6,8 @@ public abstract class UIView : MonoBehaviour
     [SerializeField]
     private bool isHideOnStart = true;
 
+    [SerializeField]
+    private float alphaChangeSpeed = 0.2f;
     protected CanvasGroup _canvasGroup;
 
     public bool IsVisiable {get; protected set;}

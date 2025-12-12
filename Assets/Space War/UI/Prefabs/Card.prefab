@@ -130,7 +130,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 159.5074, z: 0, w: 0}
+  m_margin: {x: 0.95129395, y: 159.5074, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9292407, g: 0.9122893, b: 0.49887273, a: 1}
+  m_Color: {r: 0.99607843, g: 0.5686275, b: 0.34509805, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -252,7 +252,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 200, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5016525456811593493
 CanvasRenderer:
@@ -371,7 +371,6 @@ MonoBehaviour:
   objectImage: {fileID: 6020378264209881310}
   selectFrameImage: {fileID: 6761792322739383609}
   costText: {fileID: 5357443024114108793}
-  _button: {fileID: 2751526183662737197}
 --- !u!1 &8238153566287080850
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,11 +403,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7028465362122164878}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 20}
-  m_SizeDelta: {x: -30, y: -40}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
+  m_SizeDelta: {x: -0.000015258789, y: 140}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &6900269313959676982
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -430,7 +429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5590095, g: 0.5590095, b: 0.5590095, a: 1}
+  m_Color: {r: 0.94509804, g: 0.94509804, b: 0.9529412, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
